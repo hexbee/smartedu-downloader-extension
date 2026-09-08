@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "国家智慧教育平台教材一键下载器",
+  "version": "1.0.1",
+  "description": "在国家中小学智慧教育平台教材页面提供一键下载高清 PDF 课本功能，支持内存极速导出与鉴权下载。",
+  "permissions": [
+    "downloads"
+  ],
+  "host_permissions": [
+    "*://basic.smartedu.cn/*",
+    "*://*.smartedu.cn/*",
+    "*://*.cbern.com.cn/*",
+    "*://*.eduyun.cn/*"
+  ],
+  "action": {
+    "default_title": "国家智慧教育平台教材下载助手"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://basic.smartedu.cn/*",
+        "*://*.smartedu.cn/*",
+        "*://*.eduyun.cn/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "world": "MAIN",
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
